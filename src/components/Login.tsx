@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 
 interface LoginProps {
   onSwitchToRegister: () => void;
@@ -19,8 +19,14 @@ const Login: React.FC<LoginProps> = ({ onSwitchToRegister }) => {
     setError('');
     setIsLoading(true);
 
+    if (!email || !password) {
+      setError('Email and password are required.');
+      setIsLoading(false);
+      return;
+    }
+
     try {
-      const response = await fetch('http://localhost:3000/api/login', {
+      const response = await fetch(`http://localhost:3001/user/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -29,14 +35,17 @@ const Login: React.FC<LoginProps> = ({ onSwitchToRegister }) => {
       });
 
       if (!response.ok) {
-        throw new Error('Login failed');
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Login failed');
       }
 
       const data = await response.json();
-      console.log('Login successful:', data);
-      // Handle successful login (e.g., store token, redirect)
-    } catch (err) {
-      setError('Login failed. Please check your credentials.');
+      const userId = data.data.userId
+
+      localStorage.setItem('token', data.data.token);
+      window.location.href = '/';
+    } catch (err: any) {
+      setError(err.message || 'An unexpected error occurred.');
     } finally {
       setIsLoading(false);
     }

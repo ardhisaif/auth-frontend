@@ -9,7 +9,7 @@ interface RegisterProps {
 }
 
 const Register: React.FC<RegisterProps> = ({ onSwitchToLogin }) => {
-  const [name, setName] = useState('');
+  const [username, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -21,12 +21,12 @@ const Register: React.FC<RegisterProps> = ({ onSwitchToLogin }) => {
     setIsLoading(true);
 
     try {
-      const response = await fetch('http://localhost:3000/api/register', {
+      const response = await fetch('http://localhost:3001/user/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ name, email, password }),
+        body: JSON.stringify({ username, email, password }),
       });
 
       if (!response.ok) {
@@ -58,7 +58,7 @@ const Register: React.FC<RegisterProps> = ({ onSwitchToLogin }) => {
               id="name"
               type="text"
               placeholder="Enter your name"
-              value={name}
+              value={username}
               onChange={(e) => setName(e.target.value)}
               required
             />
