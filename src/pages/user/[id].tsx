@@ -20,19 +20,22 @@ function UserDetail() {
     router.push("/");
   };
 
+  const handleUpdate = () => {
+    router.push(`/user/update/`);
+  };
+
   useEffect(() => {
     const fetchUser = async () => {
       if (!id) return;
 
       const token = localStorage.getItem("token");
-
       if (!token) {
         router.push("/");
         return;
       }
 
       try {
-        const response = await fetch(`http://localhost:3001/user/${id}`, {
+        const response = await fetch(`http://localhost:3001/user/`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -89,9 +92,14 @@ function UserDetail() {
         </div>
 
         <div className={styles.cardFooter}>
-          <button onClick={handleLogout} className={styles.logoutButton}>
-            Logout
-          </button>
+          <div className={styles.buttonGroup}>
+            <button onClick={handleUpdate} className={styles.updateButton}>
+              Update
+            </button>
+            <button onClick={handleLogout} className={styles.logoutButton}>
+              Logout
+            </button>
+          </div>
         </div>
       </div>
     </div>
