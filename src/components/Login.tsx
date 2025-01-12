@@ -6,9 +6,10 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 
 interface LoginProps {
   onSwitchToRegister: () => void;
+  onLoginSuccess: (userId: number) => void; // Tambahkan prop ini
 }
 
-const Login: React.FC<LoginProps> = ({ onSwitchToRegister }) => {
+const Login: React.FC<LoginProps> = ({ onSwitchToRegister, onLoginSuccess }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -43,7 +44,8 @@ const Login: React.FC<LoginProps> = ({ onSwitchToRegister }) => {
       const userId = data.data.userId
 
       localStorage.setItem('token', data.data.token);
-      window.location.href = '/';
+      
+      onLoginSuccess(userId)
     } catch (err: any) {
       setError(err.message || 'An unexpected error occurred.');
     } finally {
