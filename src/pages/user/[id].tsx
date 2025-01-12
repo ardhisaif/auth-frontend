@@ -1,14 +1,12 @@
 // pages/user/[id].tsx
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { Card } from "@/components/ui/card";
-import Header from '@/components/Header'; // Import Header
+import styles from './user.module.css';
 
 interface User {
   id: number;
   username: string;
   email: string;
-  // Tambahkan properti lainnya sesuai kebutuhan
 }
 
 function UserDetail() {
@@ -17,22 +15,28 @@ function UserDetail() {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
 
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    router.push("/");
+  };
+
   useEffect(() => {
     const fetchUser = async () => {
       if (!id) return;
 
       const token = localStorage.getItem("token");
+
       if (!token) {
-        router.push("/"); // Redirect jika token tidak ada
+        router.push("/");
         return;
       }
 
       try {
         const response = await fetch(`http://localhost:3001/user/${id}`, {
-          method: 'GET',
+          method: "GET",
           headers: {
-            'Content-Type': 'application/json',
-            'auth_security': token, // Gunakan header auth_security
+            "Content-Type": "application/json",
+            auth_security: token,
           },
         });
 
@@ -40,7 +44,6 @@ function UserDetail() {
           throw new Error("Failed to fetch user");
         }
         const data = await response.json();
-
         setUser(data.data);
       } catch (error) {
         console.error("Error fetching user:", error);
@@ -53,21 +56,45 @@ function UserDetail() {
   }, [id]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div className={styles.loadingContainer}>Loading...</div>;
   }
 
   if (!user) {
-    return <div>User not found</div>;
+    return <div className={styles.errorContainer}>User not found</div>;
   }
 
   return (
-    <Card>
-      <Header />
-      <h1>User Details</h1>
-      <p>ID: {user.id}</p>
-      <p>Name: {user.username}</p>
-      <p>Email: {user.email}</p>
-    </Card>
+    <div className={styles.container}>
+      <div className={styles.card}>
+        <div className={styles.cardHeader}>
+          <h1 className={styles.cardTitle}>User Details</h1>
+          <p className={styles.cardDescription}>View your profile information</p>
+        </div>
+        
+        <div className={styles.cardContent}>
+          <div className={styles.detailGroup}>
+            <label className={styles.label}>ID</label>
+            <p className={styles.value}>{user.id}</p>
+          </div>
+          
+          <div className={styles.detailGroup}>
+            <label className={styles.label}>Username</label>
+            <p className={styles.value}>{user.username}</p>
+          </div>
+          
+          <div className={styles.detailGroup}>
+            <label className={styles.label}>Email</label>
+            <p className={styles.value}>{user.email}</p>
+          </div>
+        </div>
+
+        <div className={styles.cardFooter}>
+          <button onClick={handleLogout} className={styles.logoutButton}>
+            Logout
+          </button>
+        </div>
+      </div>
+    </div>
   );
 }
 
