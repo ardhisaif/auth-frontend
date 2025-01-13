@@ -7,7 +7,10 @@ Aplikasi ini dirancang untuk menangani proses autentikasi termasuk login, regist
 </div>
 
 ## Video Preview
-[Download and watch the video](public/demo_app_fix.mp4)
+<video width="600" controls>
+  <source src="/public/demo_app_fix.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
 
 ## Getting Started
 
