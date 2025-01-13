@@ -7,10 +7,7 @@ Aplikasi ini dirancang untuk menangani proses autentikasi termasuk login, regist
 </div>
 
 ## Video Preview
-<video width="600" controls>
-  <source src="/public/demo_app_fix.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+[Demo Video](https://github.com/ardhisaif/auth-frontend/public/demo_app.mp4)
 
 ## Getting Started
 
