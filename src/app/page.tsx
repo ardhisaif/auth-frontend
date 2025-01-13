@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation'; // Import useRouter
 import Login from '../components/Login';
 import Register from '../components/Register';
+import 'dotenv/config'
 
 export default function AuthPage() {
   const [isLoginView, setIsLoginView] = useState(true);

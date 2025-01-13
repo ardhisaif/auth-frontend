@@ -10,8 +10,10 @@ interface User {
 }
 
 function UserDetail() {
+  const url = process.env.REACT_APP_API_URL
+  console.log(url);
+  
   const router = useRouter();
-  const { id } = router.query;
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -55,7 +57,7 @@ function UserDetail() {
     };
 
     fetchUser();
-  }, [id]);
+  }, []);
 
   if (loading) {
     return <div className={styles.loadingContainer}>Loading...</div>;

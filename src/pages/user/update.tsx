@@ -11,7 +11,6 @@ interface User {
 
 function UpdateUser() {
   const router = useRouter();
-  const { id } = router.query;
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -23,8 +22,6 @@ function UpdateUser() {
 
   useEffect(() => {
     const fetchUser = async () => {
-      
-      // if (!id) return;
 
       const token = localStorage.getItem("token");
       
@@ -59,7 +56,7 @@ function UpdateUser() {
     };
 
     fetchUser();
-  }, [id]);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
