@@ -1,6 +1,13 @@
-# Aplikasi Autentikasi dan Manajemen Profil Pengguna
+<div align="center">
 
-Aplikasi ini adalah sebuah aplikasi Next.js yang menyediakan fungsi autentikasi pengguna (login dan registrasi) serta manajemen profil. Pengguna dapat mendaftar, masuk, melihat profil mereka, dan memperbarui informasi mereka.
+# Auth Frontend
+
+Aplikasi ini dirancang untuk menangani proses autentikasi termasuk login, registrasi, dan pengecekan middleware autentikasi. Pengguna harus login untuk melihat dan memperbarui profil mereka.
+
+</div>
+
+## Video Preview
+[Download and watch the video](public/demo_app_fix.mp4)
 
 ## Getting Started
 
@@ -43,7 +50,7 @@ Aplikasi ini adalah sebuah aplikasi Next.js yang menyediakan fungsi autentikasi 
 2. Anda dapat mendaftar akun baru atau masuk dengan kredensial yang sudah ada
 3. Setelah masuk, Anda dapat melihat profil Anda dan memperbarui informasi jika diperlukan
 
-## Struktur Proyek
+## Struktur project
 
 - `/components`: Berisi komponen React (Login, Register)
 - `/pages`: Berisi halaman Next.js (auth, profil pengguna, pembaruan pengguna)
