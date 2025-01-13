@@ -11,7 +11,7 @@ export default function AuthPage() {
 
   const handleLoginSuccess = (userId: number) => {
     // Redirect to UserDetail page with user ID
-    router.push(`/user/${userId}`);
+    router.push(`/user/profile`);
   };
 
   const toggleView = () => {

@@ -26,9 +26,8 @@ function UserDetail() {
 
   useEffect(() => {
     const fetchUser = async () => {
-      if (!id) return;
-
       const token = localStorage.getItem("token");
+      
       if (!token) {
         router.push("/");
         return;
@@ -76,8 +75,7 @@ function UserDetail() {
         
         <div className={styles.cardContent}>
           <div className={styles.detailGroup}>
-            <label className={styles.label}>ID</label>
-            <p className={styles.value}>{user.id}</p>
+            <label className={styles.label}>ID: {user.id}</label>
           </div>
           
           <div className={styles.detailGroup}>

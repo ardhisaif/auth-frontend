@@ -86,7 +86,7 @@ function UpdateUser() {
         throw new Error(errorData.message || 'Update failed');
       }
 
-      router.push(`/user/${id}`);
+      router.push(`/user/profile`);
     } catch (err: any) {
       setError(err.message || 'An unexpected error occurred.');
     }
