@@ -1,4 +1,3 @@
-// pages/user/update/[id].tsx
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import styles from './user.module.css';
@@ -31,7 +30,8 @@ function UpdateUser() {
       }
 
       try {
-        const response = await fetch(`http://localhost:3001/user/`, {
+        const url = process.env.NEXT_PUBLIC_API_URL
+        const response = await fetch(`${url}/user/`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -69,7 +69,8 @@ function UpdateUser() {
     }
 
     try {
-      const response = await fetch(`http://localhost:3001/user/`, {
+      const url = process.env.NEXT_PUBLIC_API_URL
+      const response = await fetch(`${url}/user/`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

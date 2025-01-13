@@ -1,6 +1,8 @@
-## Installation and Running the Application
+# Aplikasi Autentikasi dan Manajemen Profil Pengguna
 
-Follow these steps to install and run the application:
+Aplikasi ini adalah sebuah aplikasi Next.js yang menyediakan fungsi autentikasi pengguna (login dan registrasi) serta manajemen profil. Pengguna dapat mendaftar, masuk, melihat profil mereka, dan memperbarui informasi mereka.
+
+## Getting Started
 
 1. **Clone the repository:**
   ```bash
@@ -11,26 +13,44 @@ Follow these steps to install and run the application:
 2. **Install dependencies:**
   ```bash
   npm install
-  # or
-  yarn install
-  # or
-  pnpm install
-  # or
-  bun install
   ```
 
 3. **Run the development server:**
   ```bash
   npm run dev
-  # or
-  yarn dev
-  # or
-  pnpm dev
-  # or
-  bun dev
   ```
 
 4. **Open the application:**
   Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Fitur
+
+- Registrasi Pengguna
+- Login Pengguna
+- Melihat Profil
+- Memperbarui Profil
+
+## Teknologi yang Digunakan
+
+- Next.js
+- React
+- TypeScript
+- Komponen Shadcn/ui
+- CSS Modules
+- Environment Variables
+
+1. Buka aplikasi di browser
+2. Anda dapat mendaftar akun baru atau masuk dengan kredensial yang sudah ada
+3. Setelah masuk, Anda dapat melihat profil Anda dan memperbarui informasi jika diperlukan
+
+## Struktur Proyek
+
+- `/components`: Berisi komponen React (Login, Register)
+- `/pages`: Berisi halaman Next.js (auth, profil pengguna, pembaruan pengguna)
+- `/styles`: Berisi modul CSS untuk styling
+
+## Integrasi API
+
+Aplikasi frontend ini dirancang untuk bekerja dengan API backend. Pastikan API Anda berjalan dan dapat diakses di URL yang ditentukan dalam file `.env.local` Anda.
+
+- **Backend Repository:** [auth-backend](https://github.com/ardhisaif/auth-backend)

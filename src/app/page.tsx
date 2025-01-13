@@ -1,17 +1,16 @@
 'use client'
 
 import React, { useState } from 'react';
-import { useRouter } from 'next/navigation'; // Import useRouter
+import { useRouter } from 'next/navigation'; 
 import Login from '../components/Login';
 import Register from '../components/Register';
 import 'dotenv/config'
 
 export default function AuthPage() {
   const [isLoginView, setIsLoginView] = useState(true);
-  const router = useRouter(); // Initialize router
+  const router = useRouter(); 
 
   const handleLoginSuccess = (userId: number) => {
-    // Redirect to UserDetail page with user ID
     router.push(`/user/profile`);
   };
 

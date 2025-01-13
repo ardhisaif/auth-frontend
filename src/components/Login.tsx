@@ -27,7 +27,8 @@ const Login: React.FC<LoginProps> = ({ onSwitchToRegister, onLoginSuccess }) => 
     }
 
     try {
-      const response = await fetch(`http://localhost:3001/user/login`, {
+      const url = process.env.NEXT_PUBLIC_API_URL
+      const response = await fetch(`${url}/user/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

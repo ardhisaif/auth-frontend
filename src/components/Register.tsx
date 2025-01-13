@@ -21,7 +21,8 @@ const Register: React.FC<RegisterProps> = ({ onSwitchToLogin }) => {
     setIsLoading(true);
 
     try {
-      const response = await fetch('http://localhost:3001/user/register', {
+      const url = process.env.NEXT_PUBLIC_API_URL
+      const response = await fetch(`${url}/user/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -30,15 +31,14 @@ const Register: React.FC<RegisterProps> = ({ onSwitchToLogin }) => {
       });
 
       if (!response.ok) {
-        throw new Error('Registration failed');
+        const errorData = await response.json();
+        throw errorData
       }
 
       const data = await response.json();
-      console.log('Registration successful:', data);
-      // Handle successful registration (e.g., show success message, switch to login)
       onSwitchToLogin();
-    } catch (err) {
-      setError('Registration failed. Please try again.');
+    } catch (err:any) {
+      setError(err.message || 'An unexpected error occurred.');
     } finally {
       setIsLoading(false);
     }

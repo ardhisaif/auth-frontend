@@ -1,4 +1,3 @@
-// pages/user/[id].tsx
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import styles from './user.module.css';
@@ -10,9 +9,6 @@ interface User {
 }
 
 function UserDetail() {
-  const url = process.env.REACT_APP_API_URL
-  console.log(url);
-  
   const router = useRouter();
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
@@ -36,7 +32,8 @@ function UserDetail() {
       }
 
       try {
-        const response = await fetch(`http://localhost:3001/user/`, {
+        const url = process.env.NEXT_PUBLIC_API_URL
+        const response = await fetch(`${url}/user/`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
