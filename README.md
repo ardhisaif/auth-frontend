@@ -7,7 +7,8 @@ Aplikasi ini dirancang untuk menangani proses autentikasi termasuk login, regist
 </div>
 
 ## Video Preview
-[Demo Video](https://github.com/ardhisaif/auth-frontend/public/demo_app.mp4)
+
+https://github.com/user-attachments/assets/f5dfd9a3-b56c-47d8-929d-c2880353e6fc
 
 ## Getting Started
 
